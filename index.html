@@ -574,19 +574,19 @@
                     <div class="col-lg-8">
                         <div class="contact-form-card">
                             <h4 class="contact-title">Send a message</h4>
-                            <form name="submit-to-google-sheet">
+                            <form >
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Your Name *" required>
+                                    <input name="name" class="form-control" type="text" placeholder="Your Name *" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="email" placeholder="Email *" required>
+                                    <input name="email" class="form-control" type="email" placeholder="Email *" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="" placeholder="Enter Your Message *" rows="7"
+                                    <textarea name="message" class="form-control" id="" placeholder="Enter Your Message *" rows="7"
                                         required></textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <button name="submit" type="submit" id="submit"
+                                    <button type="submit" id="submit"
                                         class="form-control btn btn-primary">Send Message</button>
                                 </div>
                             </form>
@@ -660,7 +660,7 @@
             </p>
         </div>
     </footer>
-    
+
     <!-- core  -->
     <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
     <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
@@ -676,8 +676,8 @@
     <script src="assets/js/main.js">
 
         // smooth scroll
-        $(document).ready(function(){
-            $(".navbar .nav-link").on('click', function(event) {
+        $(document).ready(function () {
+            $(".navbar .nav-link").on('click', function (event) {
 
                 if (this.hash !== "") {
 
@@ -687,10 +687,10 @@
 
                     $('html, body').animate({
                         scrollTop: $(hash).offset().top
-                    }, 700, function(){
+                    }, 700, function () {
                         window.location.hash = hash;
                     });
-                } 
+                }
             });
         });
 
@@ -718,16 +718,18 @@
             });
         });
 
+    </script>
+
+    <script>
         const scriptURL = "https://script.google.com/macros/s/AKfycbw0vZ3-CCjoWix8mfWGYNtNGAT-dY4odB49trKHzn9Eo_6O-TN8R8mnLyF1LYCSHWGz/exec";
         let form = document.querySelector("form");
 
         form.addEventListener('submit', e => {
             let data = new FormData(form);
             e.preventDefault();
-            fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors'})
-                .then(res => {res.text(), form.reset()});
+            fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors' })
+                .then(res => { res.text(), form.reset() });
         })
-
     </script>
 
 </body>
