@@ -570,7 +570,7 @@
                     <div class="col-lg-8">
                         <div class="contact-form-card">
                             <h4 class="contact-title">Send a message</h4>
-                            <form action="">
+                            <form name="submit-to-google-sheet" action="">
                                 <div class="form-group">
                                     <input class="form-control" type="text" placeholder="Your Name *" required>
                                 </div>
@@ -711,6 +711,18 @@ $(window).on("load", function() {
 });
 
     </script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz8OX6JpvTI5rvGD-j_9UNWIK5U2hZmPaxFXK7FNNUTYtP5pRjf4wmEIVbd0usfb-Dp/exec'
+    const form = document.forms['submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 
 </body>
 
