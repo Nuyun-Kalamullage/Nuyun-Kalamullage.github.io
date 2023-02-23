@@ -652,7 +652,18 @@
             </p>
         </div>
     </footer>
-
+    
+    <script>
+        const scriptURL = "https://script.google.com/macros/s/AKfycbz8OX6JpvTI5rvGD-j_9UNWIK5U2hZmPaxFXK7FNNUTYtP5pRjf4wmEIVbd0usfb-Dp/exec"
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
     <!-- core  -->
     <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
     <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
@@ -711,18 +722,6 @@ $(window).on("load", function() {
 });
 
     </script>
-
-<script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbz8OX6JpvTI5rvGD-j_9UNWIK5U2hZmPaxFXK7FNNUTYtP5pRjf4wmEIVbd0usfb-Dp/exec"
-    const form = document.forms['submit-to-google-sheet']
-  
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
 
 </body>
 
