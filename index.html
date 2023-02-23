@@ -718,14 +718,14 @@
             });
         });
 
-        const scriptURL = "https://script.google.com/macros/s/AKfycbz8OX6JpvTI5rvGD-j_9UNWIK5U2hZmPaxFXK7FNNUTYtP5pRjf4wmEIVbd0usfb-Dp/exec"
-        const form = document.forms['submit-to-google-sheet']
+        const scriptURL = "https://script.google.com/macros/s/AKfycbw0vZ3-CCjoWix8mfWGYNtNGAT-dY4odB49trKHzn9Eo_6O-TN8R8mnLyF1LYCSHWGz/exec";
+        let form = document.querySelector("form");
 
         form.addEventListener('submit', e => {
-            e.preventDefault()
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message))
+            let data = new FormData(form);
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors'})
+                .then(res => {res.text(), form.reset()});
         })
 
     </script>
