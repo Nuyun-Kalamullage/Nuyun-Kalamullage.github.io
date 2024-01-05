@@ -168,7 +168,7 @@ a {
 }
 
 a:hover {
-  color: #d7da23;
+  color: var(--primarybtnColorHover);
   text-decoration: none;
 }
 
