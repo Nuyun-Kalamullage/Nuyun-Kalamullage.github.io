@@ -11698,3 +11698,11 @@ pre .code {
   display: block;
   margin-top: 10px;
 }
+
+
+.expertise-raw {
+  color: var(--dark);
+}
+.expertise-raw:hover {
+  color: var(--info);
+}
